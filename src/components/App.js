@@ -20,7 +20,7 @@ export default class App extends Component {
   }
   render() {
     return <>
-      <h2>Form Contact</h2>
+      <h2>Form contact</h2>
       <ContactForm onAdd={this.handleAddContact}/>
     </>
   }
