@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import { v4 as uuid } from 'uuid';
+import s from '/ContactForm.module.css'
 
 const initalState = {
     name: '',
@@ -23,7 +24,8 @@ class ContactForm extends Component {
 
         if (!isvalidateForm) return
 
-        onAdd({id: uuid(), name, phone })
+        onAdd({ id: uuid(), name, phone })
+        this.resetForm()
     }
 
     validateForm = () => {
@@ -41,9 +43,13 @@ class ContactForm extends Component {
     render() {
         const { name, phone } = this.state
         return (
-            <form>
-                <input type='text' name='name' placeholder='Enter name' value={name} onChange />
-                <input type='tel' name='name' placeholder='Enter phone number' value={phone} onChange />
+            <form onSubmit={this.handleFormSubmit}>
+                <input type='text' name='name' placeholder='Enter name' value={name} onChange={this.handleChacheForm}/>
+                <input type='tel'
+                    name='phone'
+                    placeholder='Enter phone number'
+                    value={phone}
+                    onChange={this.handleChacheForm} />
                 <button type='submit'>Add Contact</button>
             </form>
         )
