@@ -1,4 +1,4 @@
-import s from './Filter.module.css'
+// import s from './Filter.module.css'
 const Filter = ({ filter, onChange }) => {
     return (
         <input

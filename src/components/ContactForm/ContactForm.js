@@ -1,10 +1,12 @@
 import { Component } from 'react'
 import { v4 as uuid } from 'uuid';
-import s from '/ContactForm.module.css'
+// import PropTypes from 'prop-types';
+import s from './ContactForm.module.css';
 
 const initalState = {
     name: '',
-    phone: '',
+    number: '',
+    
 }
 
 class ContactForm extends Component {
@@ -18,20 +20,20 @@ class ContactForm extends Component {
     handleFormSubmit = (e) => {
         e.preventDefault()
 
-        const { name, phone } = this.state;
+        const { name, number } = this.state;
         const { onAdd } = this.props;
         const isvalidateForm = this.validateForm()
 
         if (!isvalidateForm) return
 
-        onAdd({ id: uuid(), name, phone })
+        onAdd({ id: uuid(), name, number })
         this.resetForm()
     }
 
     validateForm = () => {
-        const { name, phone } = this.state;
+        const { name, number } = this.state;
         const { onCheckContact } = this.props;
-        if (!name || !phone) {
+        if (!name || !number) {
             alert('Some filed is enpty')
             return false
         }
@@ -41,16 +43,25 @@ class ContactForm extends Component {
     resetForm = () => this.setState(initalState)
 
     render() {
-        const { name, phone } = this.state
+        const { name, number } = this.state
         return (
             <form onSubmit={this.handleFormSubmit}>
-                <input type='text' name='name' placeholder='Enter name' value={name} onChange={this.handleChacheForm}/>
-                <input type='tel'
-                    name='phone'
-                    placeholder='Enter phone number'
-                    value={phone}
+                <input type='text'
+                    name='name'
+                    placeholder='Enter name'
+                    required
+                    value={name}
                     onChange={this.handleChacheForm} />
-                <button type='submit'>Add Contact</button>
+                
+                <input type='tel'
+                    name={'number'}
+                    placeholder='Enter number'
+                    value={number}
+                    onChange={this.handleChacheForm}
+                    required
+                />
+
+                <button className={s.contactBtn} type='submit'>Add Contact</button>
             </form>
         )
     }

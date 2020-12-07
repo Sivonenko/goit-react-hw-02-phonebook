@@ -1,7 +1,8 @@
-import s from './ContactList.module.css'
-const ContacListItem = ({ id, name, phone, onRemove }) => {
+// import s from './ContactList.module.css'
+import PropTypes from 'prop-types';
+const ContacListItem = ({ id, name, number, onRemove }) => {
     return <li>
-        {name}: {phone} <button onClick={() => onRemove(id)}>delete</button>
+        {name}: {number} <button onClick={() => onRemove(id)}>delete</button>
     </li>
 }
 
@@ -13,6 +14,9 @@ const ContactList = ({ contacts, onRemove }) => {
         </ul>
     )
 }
-
+ContactList.protoTypes = {
+  contacts: PropTypes.array.isRequired,
+  ContacListItem: PropTypes.func.isRequired
+};
 
 export default ContactList

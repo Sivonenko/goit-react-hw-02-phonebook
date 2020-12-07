@@ -15,6 +15,7 @@ export default class App extends Component {
 
     ],
     filter: ''
+    
   }
   handleAddContact = (newContact) => this.setState(({ contacts }) => ({
     contacts: [...contacts, newContact],
