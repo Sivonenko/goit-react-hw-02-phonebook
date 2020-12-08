@@ -45,24 +45,31 @@ class ContactForm extends Component {
     render() {
         const { name, number } = this.state
         return (
-            <form onSubmit={this.handleFormSubmit}>
-                <input type='text'
+            <div className={s.form_wrapper}>
+                
+            <h1 className={s.title}>Phonebook</h1>
+                <form onSubmit={this.handleFormSubmit}>
+                    <div className={s.wrap__input}>
+                    <p className={s.caption}>Number</p>
+                <input className={s.input} type='text'
                     name='name'
                     placeholder='Enter name'
                     required
                     value={name}
                     onChange={this.handleChacheForm} />
-                
-                <input type='tel'
+                <p className={s.caption}>Name</p>
+                <input className={s.input}type='tel'
                     name={'number'}
                     placeholder='Enter number'
                     value={number}
                     onChange={this.handleChacheForm}
                     required
-                />
+                        />
+                        </div>
 
                 <button className={s.contactBtn} type='submit'>Add Contact</button>
-            </form>
+                    </form>
+                    </div>
         )
     }
 }

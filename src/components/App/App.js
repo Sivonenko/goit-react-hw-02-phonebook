@@ -1,8 +1,10 @@
 import { Component } from 'react'
 
-import ContactForm from './ContactForm'
-import ContactList from './ContactList'
-import Filter from './Filter'
+import ContactForm from '../ContactForm'
+import ContactList from '../ContactList'
+import Filter from '../Filter'
+
+import s from './App.module.css';
 
 
 export default class App extends Component {
@@ -44,12 +46,12 @@ export default class App extends Component {
   render() {
     const { filter } = this.state
     const visibleContacts = this.getVisibleContacts()
-    return <>
-      <h2>Form contact</h2>
+  
+    return <div className={s.app__wrap}>
       <ContactForm onAdd={this.handleAddContact} onCheckContact={this.handleCheckUContact} />
-      <h2>Contacts List</h2>
+      
       <Filter filter={filter} onChange={this.handleFilterChange}/>
       <ContactList contacts={visibleContacts} onRemove={this.handleRemoveContact}/>
-    </>
+    </div>
   }
 }
